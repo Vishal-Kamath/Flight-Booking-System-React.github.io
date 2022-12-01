@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Flight-Booking-System-React.github.io/static/css/main.2b48c481.css",
-    "main.js": "/Flight-Booking-System-React.github.io/static/js/main.1c50f5e0.js",
+    "main.js": "/Flight-Booking-System-React.github.io/static/js/main.7d59e670.js",
     "static/js/498.587cec44.chunk.js": "/Flight-Booking-System-React.github.io/static/js/498.587cec44.chunk.js",
     "static/js/703.b505d939.chunk.js": "/Flight-Booking-System-React.github.io/static/js/703.b505d939.chunk.js",
     "static/js/919.0fbd6a7b.chunk.js": "/Flight-Booking-System-React.github.io/static/js/919.0fbd6a7b.chunk.js",
@@ -11,7 +11,7 @@
     "index.html": "/Flight-Booking-System-React.github.io/index.html",
     "static/media/userIcon.svg": "/Flight-Booking-System-React.github.io/static/media/userIcon.8f8512006bdcdda02a30afd98bc23528.svg",
     "main.2b48c481.css.map": "/Flight-Booking-System-React.github.io/static/css/main.2b48c481.css.map",
-    "main.1c50f5e0.js.map": "/Flight-Booking-System-React.github.io/static/js/main.1c50f5e0.js.map",
+    "main.7d59e670.js.map": "/Flight-Booking-System-React.github.io/static/js/main.7d59e670.js.map",
     "498.587cec44.chunk.js.map": "/Flight-Booking-System-React.github.io/static/js/498.587cec44.chunk.js.map",
     "703.b505d939.chunk.js.map": "/Flight-Booking-System-React.github.io/static/js/703.b505d939.chunk.js.map",
     "919.0fbd6a7b.chunk.js.map": "/Flight-Booking-System-React.github.io/static/js/919.0fbd6a7b.chunk.js.map",
@@ -19,6 +19,6 @@
   },
   "entrypoints": [
     "static/css/main.2b48c481.css",
-    "static/js/main.1c50f5e0.js"
+    "static/js/main.7d59e670.js"
   ]
 }
