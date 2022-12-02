@@ -1,0 +1,26 @@
+$accent-color: hsl(200, 100%, 50%);
+
+$nav-background-color: hsl(200, 100%, 95%);
+$nav-height: 7rem;
+$page-background-color: hsl(200, 100%, 80%);
+$padding: max(4vw, calc((100vw - 110rem) / 2));
+
+$tablet: 700px;
+$desktop: 1000px;
+@mixin tablet {
+  @media (min-width: #{$tablet}) {
+    @content
+  }
+};
+
+@mixin tabletOnly {
+  @media (min-width: #{$tablet}) and (max-width: #{$desktop}) {
+    @content
+  }
+};
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content
+  }
+};

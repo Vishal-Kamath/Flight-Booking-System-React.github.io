@@ -1,0 +1,327 @@
+@use '../utilities/variables' as *;
+
+.bookingPage {
+  min-height: 100vh;
+  background-color: $page-background-color;
+  padding: calc($nav-height + 1.5rem) $padding 2rem $padding;
+  .bookingContainer {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-gap: 0.5rem;
+
+    grid-template-areas: 
+      "airlines"
+      "sourceDetails"
+      "destinationDetails"
+      "price"
+      "passengersLabel"
+      "bookingSection"
+      "seatsLabel"
+      "seatsContainer"
+      "bookButton";
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas: 
+        "airlines airlines"
+        "sourceDetails destinationDetails"
+        "price price"
+        "passengersLabel passengersLabel"
+        "bookingSection bookingSection"
+        "seatsLabel seatsLabel"
+        "seatsContainer seatsContainer"
+        "bookButton bookButton";
+    }
+
+    @include desktop {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 5rem 15rem 6rem 5rem 1fr 5rem;
+      grid-template-areas: 
+        "airlines airlines seatsLabel"
+        "sourceDetails destinationDetails seatsContainer"
+        "price price seatsContainer"
+        "passengersLabel passengersLabel seatsContainer"
+        "bookingSection bookingSection seatsContainer"
+        "bookButton bookButton bookButton";
+    }
+
+    .airlines {
+      grid-area: airlines ;
+
+      background-color: white;
+      padding: 0.75rem;
+      border-radius: 0.75rem;
+      
+      font-size: 2.5rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      img {
+        width: 3rem;
+      }
+    }
+    .sourceDetails {
+      grid-area: sourceDetails;
+    }
+    .destinationDetails {
+      grid-area: destinationDetails;
+    }
+    .sourceDetails,
+    .destinationDetails {
+      background-color: white;
+      padding: 0.75rem;
+      border-radius: 0.75rem;
+      table {
+        font-size: 1.5rem;
+        th {
+          text-align: left;
+          font-size: 1.75rem;
+        }
+      }
+    }
+    .price {
+      grid-area: price;
+
+      background-color: white;
+      padding: 0.75rem;
+      border-radius: 0.75rem;
+
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+
+      @include tablet {
+        text-align: center;
+      }
+    }
+
+    .passengersLabel {
+      grid-area: passengersLabel;
+
+      background-color: white;
+      padding: 0.75rem;
+      border-radius: 0.75rem;
+
+      font-size: 1.75rem;
+      font-weight: bold;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .passengerCounter {
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        .counterButton {
+          width: 2rem;
+          height: 2rem;
+          border-radius: 2rem;
+          border: 0;
+          background-color: none;
+
+          font-size: 1.25rem;
+          font-weight: bold;
+
+          display: flex; 
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+
+
+
+    .bookingSection {
+      grid-area: bookingSection;
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      grid-auto-rows: 25rem;
+      grid-gap: 0.5rem;
+      margin-bottom: 1.5rem;
+
+
+      @include tablet {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .passengerField {
+        background-color: white;
+        padding: 0.75rem;
+        border-radius: 0.75rem;
+
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1.5rem;
+        
+        .passengerNumber {
+          font-size: 1.75rem;
+          font-weight: bold;
+        }
+        .formGroup {
+          position: relative;
+          width: 100%;
+          height: 3.25rem;
+          transition: all ease-in-out 0.2s;
+    
+          .formInput,
+          .formSelect {
+            width: 100%;
+            height: 100%;
+            border: 0.15rem solid lighten(black, 50%);
+            border-radius: 0.5rem;
+            outline: none;
+            padding: 0.25rem 0.75rem;
+            background-color: white;
+            transition: all ease-in-out 0.2s;
+          }
+    
+          .formLabel {
+            position: absolute;
+            top: 50%;
+            left: 0.75rem;
+            transform: translateY(-50%);
+    
+            font-size: 1.65rem;
+            color: hsla(0, 0%, 0%, 0.5);
+            background-color: white;
+    
+            padding: 0 0.25rem;
+            transition: all ease-in-out 0.2s;
+          }
+    
+          
+          .formInput:hover,
+          .formSelect:hover {
+            border: 0.15rem solid hsla( 200, 100%, 50% , 0.75);
+            ~ .formLabel {
+              color: hsla(200, 100%, 50%, 0.75);
+            }
+          }
+    
+          .formInput:focus,
+          .formSelect:focus {
+            border: 0.15rem solid hsl( 200, 100%, 50% );
+            ~ .formLabel {
+              top: 0;
+              font-size: 1.35rem;
+              color: hsl(200, 100%, 50%);
+            }
+          }
+    
+          .formInput:not(:placeholder-shown).formInput:not(:focus) ~ .formLabel {
+            top: 0;
+            font-size: 1.35rem;
+          }
+    
+          .formSelect:has(.formOption:checked) ~ .formLabel {
+            top: 0;
+            font-size: 1.35rem;
+          }
+        }
+
+        .select {
+          height: 3.5rem;
+        }
+      }
+
+      .passengerField:nth-child(2n-1) {
+        grid-column-start: 1;
+      }
+
+      .passengerField:last-child {
+        grid-column-end: -1;
+      }
+    }
+
+    .seatsLabel {
+      grid-area: seatsLabel;
+
+      background-color: white;
+      padding: 0.75rem;
+      border-radius: 0.75rem;
+
+      font-size: 1.75rem;
+      font-weight: bold;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .seatsContainer {
+      grid-area: seatsContainer;
+
+      background-color: white;
+      padding: 0.75rem;
+      border-radius: 0.75rem;
+
+      margin-bottom: 1.5rem;
+      .seats { 
+        display: grid;
+        max-width: 50rem;
+        margin: auto;
+        grid-template-columns: 1fr 1fr 1fr 2rem 1fr 1fr 1fr;
+  
+        .seatButton {
+          cursor: pointer;
+          aspect-ratio: 1;
+          border-radius: 50%;
+          margin: 0.75rem;
+          border: 0;
+  
+        }
+        .seatButton:nth-child(6n - 2) {
+          grid-column-start: 5;
+        }
+  
+        .Active {
+          background-color: gold;
+        }
+        .Booked {
+          pointer-events: none;
+          background-color: rgb(70, 70, 70);
+          color: white;
+        }
+  
+        .Passenger {
+          background-color: blue;
+          color: white;
+        }
+      }
+    }
+
+    .book {
+      grid-area: bookButton;
+
+      width: 100%;
+      font-size: 2rem;
+      height: 4rem;
+      background-color: lighten($accent-color, 45%);
+      border-radius: 0.75rem;
+    }
+    .book:hover {
+      background-color: $accent-color;
+    }
+
+    .success,
+    .success:hover {
+      border-color: green;
+      background-color: hsla(120, 100%, 50%, 0.25);
+      color: green;
+    }
+
+    .failed,
+    .failed:hover {
+      border-color: red;
+      background-color: hsl(0, 100%, 90%);
+      color: red;
+    }
+  }
+}

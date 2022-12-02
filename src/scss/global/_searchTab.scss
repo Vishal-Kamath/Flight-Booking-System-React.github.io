@@ -1,0 +1,86 @@
+@use '../utilities/variables' as *;
+
+.searchTabPage {
+  min-height: 100vh;
+  background-color: $page-background-color;
+
+  padding: 0 $padding;
+  padding-top: calc($nav-height + 1.5rem);
+
+  .searchTabContainer {
+    display: grid;
+    margin: auto;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-areas: 
+      "msgBox"
+      "source"
+      "destination"
+      "date" 
+      "passengers"
+      "search";
+    grid-gap: 0.5rem;
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas: 
+        "msgBox msgBox"
+        "source destination"
+        "date passengers"
+        "search search";
+    }
+
+    .failed {
+      grid-area: msgBox;
+      width: 100%;
+      height: 6rem;
+      font-size: 1.5rem;
+      border: 0.2rem solid hsl(0, 100%, 50%);
+      border-radius: 1rem;
+      background-color: hsl(0, 100%, 90%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: hsl(0, 100%, 50%);
+    }
+
+    input,
+    select {
+      width: 100%;
+      height: 6rem;
+      font-size: 2rem;
+      padding: 0 1rem;
+      outline: 0;
+      border: 0.2rem solid hsl(0,0%,0%, 0.5);
+      border-radius: 1rem;
+    }
+    input:hover, input:focus,
+    select:hover, select:focus {
+      border: 0.2rem solid $accent-color;
+      color: $accent-color;
+    }
+
+    .source {
+      grid-area: source;
+    }
+    .destination {
+      grid-area: destination;
+    }
+    .date {
+      grid-area: date;
+    }
+    .passengers {
+      grid-area: passengers;
+    }
+    .search {
+      height: 6rem;
+      font-size: 2rem;
+      border-width: 0.2rem;
+      border-radius: 1rem;
+      background-color: lighten($accent-color, 45%);
+      grid-area: search;
+    }
+    .search:hover {
+      background-color: $accent-color;
+    }
+  }
+}
