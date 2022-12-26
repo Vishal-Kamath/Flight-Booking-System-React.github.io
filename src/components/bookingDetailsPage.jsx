@@ -3,10 +3,12 @@ import queryString from 'query-string';
 import Cookie from 'js-cookie';
 import ip from '../utiles/ipAddress';
 import BookingDetails from './bookingDetails';
+import { Navigate } from 'react-router-dom';
 
 class BookingDetailsPage extends Component {
   state = {  
     bookingDetailsArray: [],
+    navigate: false,
   } 
 
   componentDidMount = () => {
@@ -21,7 +23,34 @@ class BookingDetailsPage extends Component {
     })
       .then(res => res.json())
       .then(data => {
-        if(data[0] === undefined) return window.location.assign('/user')
+        if(data[0] === undefined) {
+          this.setState({
+            navigate: true
+          })
+        }
+        this.setState({
+          bookingDetailsArray: data
+        })
+      })
+  }
+
+  refresh = () => {
+    const queries = queryString.parseUrl(window.location.toString());
+    const accessToken = Cookie.get('accessToken');
+    fetch(`${ip}/api/booking/bookingDetails/?booking_id=${queries.query.booking_id}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': accessToken,
+        'Content-type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        if(data[0] === undefined) {
+          this.setState({
+            navigate: true
+          })
+        }
         this.setState({
           bookingDetailsArray: data
         })
@@ -30,15 +59,21 @@ class BookingDetailsPage extends Component {
 
   render() { 
     return (
-      <div className="bookingDetailsPage">
+      <React.Fragment>
+        <div className="bookingDetailsPage">
+          {
+            this.state.bookingDetailsArray.map(booking => (
+              <BookingDetails booking={booking} refresh={this.refresh}/>
+            ))
+          }
+        </div>
         {
-          this.state.bookingDetailsArray.map(booking => (
-            <BookingDetails booking={booking} />
-          ))
+          this.state.navigate && (<Navigate to="/user" />)
         }
-      </div>
+        
+      </React.Fragment>
     );
   }
 }
- 
+
 export default BookingDetailsPage;

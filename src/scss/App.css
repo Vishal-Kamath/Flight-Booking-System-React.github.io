@@ -195,11 +195,11 @@
   align-items: center;
   border-radius: 1rem;
 }
-.navBar nav .sign:nth-child(2) {
+.navBar nav .sign#signup {
   display: none;
 }
 @media (min-width: 700px) {
-  .navBar nav .sign:nth-child(2) {
+  .navBar nav .sign#signup {
     display: inline-block;
   }
 }
@@ -217,6 +217,18 @@
 }
 .navBar nav .user:hover > img {
   filter: brightness(100);
+}
+.navBar nav .installApp {
+  border-radius: 50rem;
+  background-color: hsl(200deg, 100%, 50%);
+  color: white;
+}
+.navBar nav .slash {
+  height: 4rem;
+  width: 0.1rem;
+  background-color: black;
+  transform: rotate(30deg);
+  margin: 0 1rem;
 }
 
 .userPage {

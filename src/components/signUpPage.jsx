@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ip from '../utiles/ipAddress';
+import FormGroup from './formGroup';
 
 function getDate() {
   let date = new Date();
@@ -90,50 +91,55 @@ const SignUpPage = () => {
         <div id="msgBox"></div>        
 
         <form>
-          <div className="formGroup">
-            <input type="text" className="formInput" name='name' id='name' placeholder=' '/>
-            <label htmlFor="name" className="formLabel">Name</label>
-          </div>
+          <FormGroup 
+            formType='formInput'
+            formInputType='text'
+            formName='name'
+            formValue='Name'/>
 
-          <div className="formGroup">
-            <input type="email" className="formInput" name='email' id='email' placeholder=' '/>
-            <label htmlFor="email" className="formLabel">Email</label>
-          </div>
+          <FormGroup 
+            formType='formInput'
+            formInputType='email'
+            formName='email'
+            formValue='Email'/>
 
-          <div className="formGroup">
-            <select name="gender" id="gender" className='formSelect'>
-              <option value='' selected disabled hidden></option>
-              <option className="formOption" value="Male">Male</option>
-              <option className="formOption" value="Female">Female</option>
-              <option className="formOption" value="Others">Others</option>
-            </select>
-            <label htmlFor="gender" className="formLabel">Gender</label>
-          </div>
+          <FormGroup
+            formType='formSelect' 
+            formName='gender'
+            formValue='Gender'
+            formOptionValues={['Male', 'Female', 'Others']}/>
 
-          <div className="formGroup">
-            <input type="date" className="formInput" name='dob' id='dob' max={date} defaultValue={date}/>
-            <label htmlFor="dob" className="formLabel">date of birth</label>
-          </div>
+          <FormGroup 
+            formType='formInput'
+            formInputType='date'
+            formName='dob'
+            formMax={date}
+            formDefaultValue={date}
+            formValue='Date Of Birth'/>
 
-          <div className="formGroup">
-            <input type="number" className="formInput" name='mobileNumber' id='mobileNumber' placeholder=' '/>
-            <label htmlFor="mobileNumber" className="formLabel">Mobile Number</label>
-          </div>
+          <FormGroup 
+            formType='formInput'
+            formInputType='number'
+            formName='mobileNumber'
+            formValue='Mobile Number'/>
 
-          <div className="formGroup">
-            <input type="text" className="formInput" name='username' id='username' placeholder=' '/>
-            <label htmlFor="username" className="formLabel">Username</label>
-          </div>
+          <FormGroup 
+            formType='formInput'
+            formInputType='text'
+            formName='username'
+            formValue='Username'/>
 
-          <div className="formGroup">
-            <input type="password" className="formInput" name='password' id='password' placeholder=' '/>
-            <label htmlFor="password" className="formLabel">Password</label>
-          </div>
+          <FormGroup 
+            formType='formInput'
+            formInputType='password'
+            formName='password'
+            formValue='Password'/>
 
-          <div className="formGroup">
-            <input type="password" className="formInput" name='confirmPassword' id='confirmPassword' placeholder=' '/>
-            <label htmlFor="confirmPassword" className="formLabel">Confirm Password</label>
-          </div>
+          <FormGroup 
+            formType='formInput'
+            formInputType='password'
+            formName='confirmPassword'
+            formValue='Confirm Password'/>
 
           <input type="reset" className='btn sign' value={'reset'}/>
           <input type="submit" className='btn sign' value={'submit'} onClick={(e) => handleCreateUser(e, navigate)}/>

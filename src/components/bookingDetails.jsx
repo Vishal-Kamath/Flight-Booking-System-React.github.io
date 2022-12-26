@@ -10,6 +10,7 @@ import SpiceJet from '../images/SpiceJet.png';
 import MaleIcon from '../svg/maleIcon.svg'
 import FemaleIcon from '../svg/femaleIcon.svg'
 import ip from '../utiles/ipAddress';
+import { Navigate } from 'react-router-dom';
 
 const fetchFlightImg = (airlines) => {
   if (airlines === 'IndiGo') return IndiGo;
@@ -23,7 +24,7 @@ const fetchGenderIcon = (gender) => {
   if (gender === 'Others') return null
 }
 
-const handleDeleteFlight = (id) => {
+const handleDeleteFlight = (id, refresh) => {
   const consfirmOutput = window.confirm('Are you sure you want to CANCEL Your flight')
   if(!consfirmOutput) return
 
@@ -39,7 +40,7 @@ const handleDeleteFlight = (id) => {
     .then(res => res.json())
     .then(data => {
       if(data.message === 'successful')
-        window.location.assign(window.location.href)
+        refresh();
     })
 }
 
@@ -152,7 +153,8 @@ const BookingDetails = (props) => {
         <div className="price">Price: {price}&#129689;</div>
       </div>
       <button className="btn download" onClick={() => handleDownload(props.booking)}>Download</button>
-      <button className="btn cancel" onClick={() => handleDeleteFlight(_id)}>Cancel Flight</button>
+      <button className="btn cancel" onClick={() => handleDeleteFlight(_id, props.refresh)}>Cancel Flight</button>
+      
     </div>
   );
 }

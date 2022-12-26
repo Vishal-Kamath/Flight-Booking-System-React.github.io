@@ -48,7 +48,7 @@ class NavBar extends Component {
 
   handleRefresh = () => {
     const accessToken = Cookie.get('accessToken');
-    if (!accessToken) {
+    if (!accessToken || accessToken === undefined) {
       return this.setState({
         loggedIn: false,
         user: {},
@@ -83,7 +83,7 @@ class NavBar extends Component {
 
   
 
-  handleLogout = () => {
+  handleLogout = async () => {
     const consfirmOutput = window.confirm('Are you sure you want to Logout')
     if(!consfirmOutput) return
     Cookie.remove('accessToken');
@@ -91,7 +91,8 @@ class NavBar extends Component {
       loggedIn: false,
       user: {}
     })
-    window.location.assign('/')
+    await new Promise(resolve => setTimeout(resolve, 500));
+    this.handleRefresh()
   }
 
   render() {
@@ -112,7 +113,8 @@ class NavBar extends Component {
           context={{
             user: this.state.user, 
             bookingDetails: this.state.bookingDetails ,
-            handleLogout: this.handleLogout }}/>
+            handleLogout: this.handleLogout,
+            handleRefresh: this.handleRefresh }}/>
       </React.Fragment>
     );
   }

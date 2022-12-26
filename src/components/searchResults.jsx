@@ -45,7 +45,7 @@ class SearchResults extends Component {
 
   handleBookingPage = (navigate, flight_id) => {
     const queries = queryString.parseUrl(window.location.toString());
-    navigate(`/?flight_id=${flight_id}&passengers=${queries.query.passengers}`)
+    navigate(`/booking/?flight_id=${flight_id}&passengers=${queries.query.passengers}`)
   }
 
   render() { 

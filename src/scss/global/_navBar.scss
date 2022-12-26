@@ -41,7 +41,7 @@
 
       border-radius: 1rem;
     }
-    .sign:nth-child(2) {
+    .sign#signup {
       display: none;
       
       @include tablet {
@@ -63,6 +63,19 @@
       > img {
         filter: brightness(100);
       }
+    }
+
+    .installApp {
+      border-radius: 50rem;
+      background-color: $accent-color;
+      color: white;
+    }
+    .slash {
+      height: 4rem;
+      width: 0.1rem;
+      background-color: black;
+      transform: rotate(30deg);
+      margin: 0 1rem;
     }
   }
 }

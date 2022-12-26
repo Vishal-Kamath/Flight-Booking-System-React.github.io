@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ip from '../utiles/ipAddress';
 import Cookie from 'js-cookie';
+import FormGroup from './formGroup';
 
 function handleSignIn(e, navigate) {
   e.preventDefault();
@@ -59,16 +60,17 @@ const SignInPage = () => {
         <div id="msgBox"></div>
 
         <form>
+          <FormGroup 
+            formType='formInput'
+            formInputType='text'
+            formName='username'
+            formValue='Username'/>
 
-          <div className="formGroup">
-            <input type="text" className="formInput" name='username' id='username' placeholder=' ' />
-            <label htmlFor="username" className="formLabel">Username</label>
-          </div>
-
-          <div className="formGroup">
-            <input type="password" className="formInput" name='password' id='password' placeholder=' ' />
-            <label htmlFor="password" className="formLabel">Password</label>
-          </div>
+          <FormGroup 
+            formType='formInput'
+            formInputType='password'
+            formName='password'
+            formValue='Password'/>
 
           <input type="reset" className='btn sign' value={'reset'}/>
           <input type="submit" className='btn sign' value={'submit'} onClick={(e) => handleSignIn(e, navigate)}/>
